@@ -174,7 +174,8 @@ def get_gemini_response_with_suggestions(context_text, user_question, api_key):
             model="gemini-3-flash-preview",
             contents=prompt,
             config={
-                "response_mime_type": "application/json"
+                "response_mime_type": "application/json",
+                "temperature": 0.0
             }
         )
 
