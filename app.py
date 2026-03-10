@@ -13,7 +13,7 @@ except:
     st.stop()
 
 # المجلد الجديد
-INDEX_FOLDER = "faiss_index_new"
+INDEX_FOLDER = "faiss_index_ae"
 
 # --- إعدادات الصفحة ---
 st.set_page_config(page_title="المبادر الذاتي - Assistant", page_icon="🇹🇳", layout="centered")
