@@ -5,17 +5,15 @@ from google import genai
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import FAISS
 
-# --- 🔑 API Key ---
 try:
     api_key = st.secrets["GOOGLE_API_KEY"]
 except:
-    st.error("⚠️ API Key غير موجود")
+    st.error("⚠️ API Key not found")
     st.stop()
 
-# المجلد الجديد
+
 INDEX_FOLDER = "faiss_index_ae"
 
-# --- إعدادات الصفحة ---
 st.set_page_config(page_title="المبادر الذاتي - Assistant", page_icon="🇹🇳", layout="centered")
 
 # --- CSS Styling (RTL + Hide Sidebar) ---
@@ -23,19 +21,16 @@ st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-    /* 1. إخفاء القائمة الجانبية تماماً */
     section[data-testid="stSidebar"] {
         display: none;
     }
     
-    /* 2. تطبيق الخط والعربية على كامل التطبيق */
     html, body, .stApp {
         font-family: 'Cairo', sans-serif !important;
         direction: rtl !important;
         text-align: right !important;
     }
 
-    /* 3. قلب اتجاه رسائل الشات */
     .stChatMessage {
         flex-direction: row-reverse !important;
         text-align: right !important;
@@ -43,7 +38,6 @@ st.markdown("""
         gap: 10px;
     }
     
-    /* 4. تصليح المحتوى داخل الرسالة */
     div[data-testid="stChatMessageContent"] {
         text-align: right !important;
         direction: rtl !important;
@@ -51,26 +45,22 @@ st.markdown("""
         margin-left: 0px !important;
     }
 
-    /* 5. تصليح مكان الـ Avatar */
     .stChatMessage .stChatMessageAvatar {
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
 
-    /* 6. تصليح القوائم والنقاط */
     ul, ol {
         direction: rtl !important;
         text-align: right !important;
         margin-right: 20px !important;
     }
     
-    /* 7. تصليح خانة الكتابة */
     .stChatInputContainer textarea {
         direction: rtl !important;
         text-align: right !important;
     }
 
-    /* 8. الأزرار */
     .stButton button {
         width: 100%;
         border-radius: 8px;
@@ -86,12 +76,10 @@ st.markdown("""
         border-color: #1f77b4;
     }
     
-    /* 9. العناوين والنصوص */
     p, h1, h2, h3, h4, h5, h6, span, div {
         text-align: right;
     }
     
-    /* إخفاء زر Deploy */
     .stDeployButton {display:none;}
     </style>
 """, unsafe_allow_html=True)
